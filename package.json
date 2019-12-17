@@ -1,7 +1,7 @@
 {
-  "name": "silverstripe-hasonefield",
+  "name": "silverstripe-hasone-search-field",
   "version": "1.1.0",
-  "description": "HasOneField for SilverStripe",
+  "description": "HasOneSearchField for SilverStripe",
   "main": "./client/src/boot/index.js",
   "license": "BSD-3-Clause",
   "author": "SilverShop.",

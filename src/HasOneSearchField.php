@@ -1,19 +1,19 @@
 <?php
 
-namespace SilverShop\HasOneField;
+namespace DaveJToews\HasOneSearchField;
 
 use SilverStripe\ORM\DataObject;
 use SilverStripe\View\Requirements;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig;
-use SilverShop\HasOneField\GridFieldHasOneButtonRow;
+use DaveJToews\HasOneField\GridFieldHasOneButtonRow;
 use SilverStripe\Forms\GridField\GridFieldDetailForm;
-use SilverStripe\Forms\GridField\GridFieldAddExistingAutocompleter;
+use Symbiote\GridFieldExtensions\GridFieldAddExistingSearchButton;
 
 /**
- * Class HasOneButtonField
+ * Class HasOneSearchField
  */
-class HasOneButtonField extends GridField
+class HasOneSearchField extends GridField
 {
 
     /**
@@ -46,7 +46,7 @@ class HasOneButtonField extends GridField
      * @param GridFieldConfig|null $customConfig
      * @param boolean|null $useAutocompleter
      */
-    public function __construct(DataObject $parent, $relationName, $fieldName = null, $title = null, GridFieldConfig $customConfig = null, $useAutocompleter = true)
+    public function __construct(DataObject $parent, $relationName, $list = null, $fieldName = null, $title = null, GridFieldConfig $customConfig = null, $useSearch = true)
     {
         $record = $parent->{$relationName}();
         $this->setRecord($record);
@@ -62,18 +62,16 @@ class HasOneButtonField extends GridField
             ->addComponent(new GridFieldDetailForm())
             ->addComponent(new GridFieldHasOneUnlinkButton($parent, 'buttons-before-right'))
             ->addComponent(new GridFieldHasOneEditButton('buttons-before-right'));
-        
-        if ($useAutocompleter) {
-            $config->addComponent(new HasOneAddExistingAutoCompleter('buttons-before-right'));
+
+        if ($useSearch) {
+            $config->addComponent(new GridFieldAddExistingSearchButton('buttons-before-right'));
         }
 
-        $list = HasOneButtonRelationList::create($parent, $this->record, $relationName);
-
-        // Limit the existing list so that autocomplete will find results
-        $list = $list->filter("ID", $this->record->ID);
+        $className = $record->ClassName;
+        $list = $list ? $list : $className::get();
 
         parent::__construct($fieldName ?: $relationName, $title, $list, ($customConfig) ?: $config);
-        $this->setModelClass($record->ClassName);
+        $this->setModelClass($className);
     }
 
     /**

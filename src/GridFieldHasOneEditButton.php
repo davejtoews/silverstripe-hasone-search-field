@@ -1,6 +1,6 @@
 <?php
 
-namespace SilverShop\HasOneField;
+namespace DaveJToews\HasOneField;
 
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\GridField\GridField;
@@ -16,7 +16,7 @@ class GridFieldHasOneEditButton extends GridFieldAddNewButton implements GridFie
 {
 
     /**
-     * @param \SilverShop\HasOneField\HasOneButtonField $gridField
+     * @param \DaveJToews\HasOneField\HasOneButtonField $gridField
      * @return array
      */
     public function getHTMLFragments($gridField)

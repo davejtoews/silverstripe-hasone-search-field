@@ -1,6 +1,6 @@
 <?php
 
-namespace SilverShop\HasOneField;
+namespace DaveJToews\HasOneField;
 
 use SilverStripe\View\SSViewer;
 use SilverStripe\View\ArrayData;

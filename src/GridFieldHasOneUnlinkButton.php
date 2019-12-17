@@ -1,6 +1,6 @@
 <?php
 
-namespace SilverShop\HasOneField;
+namespace DaveJToews\HasOneField;
 
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\GridField\GridField;
