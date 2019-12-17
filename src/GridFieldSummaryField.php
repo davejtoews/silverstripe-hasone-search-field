@@ -1,6 +1,6 @@
 <?php
 
-namespace DaveJToews\HasOneField;
+namespace DaveJToews\HasOneSearchField;
 
 use SilverStripe\Core\Convert;
 use SilverStripe\Forms\GridField\GridField;

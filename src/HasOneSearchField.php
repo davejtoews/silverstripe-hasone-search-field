@@ -6,7 +6,7 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\View\Requirements;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig;
-use DaveJToews\HasOneField\GridFieldHasOneButtonRow;
+use DaveJToews\HasOneSearchField\GridFieldHasOneButtonRow;
 use SilverStripe\Forms\GridField\GridFieldDetailForm;
 use Symbiote\GridFieldExtensions\GridFieldAddExistingSearchButton;
 
